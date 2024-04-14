@@ -157,15 +157,19 @@ class Wall(GameSprite):
     def __init__(self, img, position, size, speed):
         super().__init__(img, position, size, speed)
 
-bg = GameSprite(img="bg1",
+bg = GameSprite(spritesheet="bg1",
                 position=(0, 0),
                 size=(4000, 2000),
                 speed=5)
+#bg = GameSprite(window=WINDOW)
+#bg.img(image=sprites["BACKGROUND"])
+#bg.size(4000, 2000)
+#bg.speed=(5)
 
-school_form = Player(img="school_form.png",
-                     position=(620, 480),
-                     size=(50, 70),
-                     speed=7)
+player = Player(img="PLAYER",
+                    position=(620, 480),
+                    size=(50, 70),
+                    speed=7)
 blocks = [Wall(img="school_form.png",
                 position=(800, 550),
                 size=(50, 70),
@@ -179,13 +183,13 @@ while GAME_RUN:
     
     # Отрисовка
     bg.reset()
-    school_form.reset()
+    player.reset()
     for block in blocks:
         block.reset()
 
     # Логика игры (работает пока не проиграем/выиграем)
     if not GAME_FINISHED:
-        school_form.update()  # Update players
+        player.update()  # Update players
  
     display.update()
     CLOCK.tick(FPS)
